@@ -1,12 +1,14 @@
 <?php
 
+defined( 'ABSPATH' ) or die;
+
 /*function wfm_activation() {
 //	die("Плагин активирован");
 	$site = get_home_url();
 	wp_mail('mail@mail.com', 'Плагин активирован', "Плагин активирован на сайте {$site}");
 }*/
 
-/*function wfm_activation() {
+function wfm_activation() {
 	if ( PHP_MAJOR_VERSION < 8 ) {
 		die( 'Для работы плагина необходима версия PHP >= 8' );
 	}
@@ -17,4 +19,9 @@
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
 	$wpdb->query($query);
-}*/
+}
+
+function wfm_deactivation() {
+	$site = get_home_url();
+	wp_mail('mail@mail.com', 'Плагин деактивирован', "Плагин деактивирован на сайте {$site}");
+}
