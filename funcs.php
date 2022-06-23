@@ -25,3 +25,40 @@ function wfm_deactivation() {
 	$site = get_home_url();
 	wp_mail('mail@mail.com', 'Плагин деактивирован', "Плагин деактивирован на сайте {$site}");
 }
+
+function wfm_add_admin_pages() {
+	add_menu_page(
+		__('WFM Settings Main Page', 'wfmfirst'),
+		__('WFM Settings', 'wfmfirst'),
+		'manage_options',
+		'wfm-main-settings',
+		'wfm_main_admin_page',
+		'dashicons-welcome-learn-more',
+//		3
+	);
+
+	add_submenu_page(
+		'wfm-main-settings',
+		__('WFM Settings Main Page', 'wfmfirst'),
+		__('WFM Main', 'wfmfirst'),
+		'manage_options',
+		'wfm-main-settings',
+	);
+
+	add_submenu_page(
+		'wfm-main-settings',
+		__('WFM Submenu Page', 'wfmfirst'),
+		__('WFM Submenu', 'wfmfirst'),
+		'manage_options',
+		'wfm-subpage1',
+		'wfm_subpage1'
+	);
+}
+
+function wfm_main_admin_page() {
+	require_once WFM_PLUGIN_DIR . 'templates/main-admin-page.php';
+}
+
+function wfm_subpage1() {
+	require_once WFM_PLUGIN_DIR . 'templates/admin-subpage1.php';
+}
