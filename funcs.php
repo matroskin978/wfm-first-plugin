@@ -2,12 +2,6 @@
 
 defined( 'ABSPATH' ) or die;
 
-/*function wfm_activation() {
-//	die("Плагин активирован");
-	$site = get_home_url();
-	wp_mail('mail@mail.com', 'Плагин активирован', "Плагин активирован на сайте {$site}");
-}*/
-
 function wfm_activation() {
 	if ( PHP_MAJOR_VERSION < 8 ) {
 		die( 'Для работы плагина необходима версия PHP >= 8' );
@@ -93,3 +87,75 @@ function wfm_styles_admin() {
 function wfm_load_textdomain() {
 	load_plugin_textdomain( 'wfmfirst', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 }
+
+function wfm_add_settings() {
+	// register settins
+	register_setting( 'wfm_main_group', 'wfm_main_email' );
+	register_setting( 'wfm_main_group', 'wfm_main_name' );
+	register_setting( 'wfm_subpage1_group', 'wfm_subpage1_phone' );
+
+	// add sections
+	add_settings_section(
+		'wfm_main_first_section',
+		__( 'Main Section 1', 'wfmfirst' ),
+		function () {
+			echo '<p>' . __( 'Main Section 1 description...' ) . '</p>';
+		},
+		'wfm-main-settings'
+	);
+	add_settings_section(
+		'wfm_main_second_section',
+		__( 'Main Section 2', 'wfmfirst' ),
+		function () {
+			echo '<p>' . __( 'Main Section 2 description...' ) . '</p>';
+		},
+		'wfm-main-settings'
+	);
+	add_settings_section(
+		'wfm_subpage1_first_section',
+		__( 'Subpage Section 1', 'wfmfirst' ),
+		function () {
+			echo '<p>' . __( 'Subpage Section 1 description...' ) . '</p>';
+		},
+		'wfm-subpage1'
+	);
+
+	// add settings
+	add_settings_field(
+		'wfm_main_email',
+		__( 'E-mail', 'wfmfirst' ),
+		'wfm_main_email_field',
+		'wfm-main-settings',
+		'wfm_main_first_section',
+		array( 'label_for' => 'wfm_main_email' )
+	);
+	add_settings_field(
+		'wfm_main_name',
+		__( 'Name', 'wfmfirst' ),
+		'wfm_main_name_field',
+		'wfm-main-settings',
+		'wfm_main_second_section',
+		array( 'label_for' => 'wfm_main_name' )
+	);
+	add_settings_field(
+		'wfm_subpage1_phone',
+		__( 'Phone', 'wfmfirst' ),
+		'wfm_subpage1_phone_field',
+		'wfm-subpage1',
+		'wfm_subpage1_first_section',
+		array( 'label_for' => 'wfm_subpage1_phone' )
+	);
+}
+
+function wfm_main_email_field() {
+	echo '<input name="wfm_main_email" id="wfm_main_email" type="email" value="' . esc_attr( get_option( 'wfm_main_email' ) ) . '" class="regular-text code">';
+}
+
+function wfm_main_name_field() {
+	echo '<input name="wfm_main_name" id="wfm_main_name" type="text" value="' . esc_attr( get_option( 'wfm_main_name' ) ) . '" class="regular-text code">';
+}
+
+function wfm_subpage1_phone_field() {
+	echo '<input name="wfm_subpage1_phone" id="wfm_subpage1_phone" type="text" value="' . esc_attr( get_option( 'wfm_subpage1_phone' ) ) . '" class="regular-text code">';
+}
+
