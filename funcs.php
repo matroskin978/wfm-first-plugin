@@ -89,3 +89,7 @@ function wfm_scripts_admin2() {
 function wfm_styles_admin() {
 	wp_enqueue_style( 'wfm-admin', plugins_url( '/assets/admin/wfm-admin.css', __FILE__ ) );
 }
+
+function wfm_load_textdomain() {
+	load_plugin_textdomain( 'wfmfirst', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+}
