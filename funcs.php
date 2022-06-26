@@ -13,6 +13,9 @@ function wfm_activation() {
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
 	$wpdb->query( $query );
+
+	wfm_add_post_type();
+	flush_rewrite_rules();
 }
 
 function wfm_deactivation() {
@@ -159,3 +162,32 @@ function wfm_subpage1_phone_field() {
 	echo '<input name="wfm_subpage1_phone" id="wfm_subpage1_phone" type="text" value="' . esc_attr( get_option( 'wfm_subpage1_phone' ) ) . '" class="regular-text code">';
 }
 
+function wfm_add_post_type() {
+	register_taxonomy( 'genre', 'book', array(
+//		'label' => __( 'Genres', 'wfmfirst' ),
+		'hierarchical'  => true,
+		'show_ui' => true,
+		'show_admin_column' => true,
+		'show_in_rest' => true,
+		'rewrite' => array( 'slug' => 'books/genre' ),
+		'labels'        => array(
+			'name'              => __( 'Genres', 'wfmfirst' ),
+			'singular_name'     => __( 'Genre', 'wfmfirst' ),
+			'all_items'         => __( 'All Genres', 'wfmfirst' ),
+			'edit_item'         => __( 'Edit Genre', 'wfmfirst' ),
+			'update_item'       => __( 'Update Genre', 'wfmfirst' ),
+			'add_new_item'      => __( 'Add New Genre', 'wfmfirst' ),
+			'new_item_name'     => __( 'New Genre Name', 'wfmfirst' ),
+			'menu_name'         => __( 'Genre', 'wfmfirst' ),
+		),
+	) );
+
+	register_post_type( 'book', array (
+		'label' => __( 'Books', 'wfmfirst' ),
+		'public' => true,
+		'supports' => array( 'title', 'editor', 'thumbnail' ),
+		'has_archive' => true,
+		'rewrite' => array( 'slug' => 'books' ),
+		'show_in_rest' => true,
+	) );
+}

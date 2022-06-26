@@ -25,3 +25,5 @@ add_action( 'admin_menu', 'wfm_add_admin_pages' );
 add_action( 'wp_enqueue_scripts', 'wfm_scripts_front' );
 //add_action( 'admin_enqueue_scripts', 'wfm_scripts_admin' );
 add_action( 'admin_init', 'wfm_add_settings' );
+
+add_action( 'init', 'wfm_add_post_type' );
