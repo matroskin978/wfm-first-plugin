@@ -27,3 +27,4 @@ add_action( 'wp_enqueue_scripts', 'wfm_scripts_front' );
 add_action( 'admin_init', 'wfm_add_settings' );
 
 add_action( 'init', 'wfm_add_post_type' );
+add_filter( 'template_include', 'wfm_get_theme_template' );
