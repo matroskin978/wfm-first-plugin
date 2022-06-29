@@ -28,3 +28,5 @@ add_action( 'admin_init', 'wfm_add_settings' );
 
 add_action( 'init', 'wfm_add_post_type' );
 add_filter( 'template_include', 'wfm_get_theme_template' );
+// https://developer.wordpress.org/reference/hooks/plugin_action_links_plugin_file/
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'wfm_add_plugin_links' );

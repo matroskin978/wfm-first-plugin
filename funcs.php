@@ -213,3 +213,9 @@ function wfm_get_theme_template( $template ) {
 
 	return $template;
 }
+
+function wfm_add_plugin_links( $links ) {
+	$new_links = array( '<a href="' . admin_url( 'admin.php?page=wfm-main-settings' ) . '">' . __( 'WFM Settings', 'wfmfirst' ) . '</a>' );
+	$links = array_merge( $links, $new_links );
+	return $links;
+}

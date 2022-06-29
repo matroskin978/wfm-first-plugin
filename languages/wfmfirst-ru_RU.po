@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Blank WordPress Pot v1.0.0\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2022-06-23 22:51+0300\n"
+"POT-Creation-Date: 2022-06-28 15:07+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Your Team <translations@example.com>\n"
@@ -25,34 +25,113 @@ msgstr ""
 "X-Generator: Poedit 3.1\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: funcs.php:31 funcs.php:42
+#: funcs.php:28 funcs.php:39
 msgid "WFM Settings Main Page"
 msgstr "WFM общие настройки"
 
-#: funcs.php:32
+#: funcs.php:29
 msgid "WFM Settings"
 msgstr "WFM настройки"
 
-#: funcs.php:43
+#: funcs.php:40
 msgid "WFM Main"
 msgstr "WFM общее"
 
-#: funcs.php:50
+#: funcs.php:47
 msgid "WFM Submenu Page"
 msgstr "WFM Дополнительная страница"
 
-#: funcs.php:51
+#: funcs.php:48
 msgid "WFM Submenu"
 msgstr "WFM подменю"
+
+#: funcs.php:103
+msgid "Main Section 1"
+msgstr "Главная секция 1"
+
+#: funcs.php:105
+msgid "Main Section 1 description..."
+msgstr "Описание главной секции 1"
+
+#: funcs.php:111
+msgid "Main Section 2"
+msgstr "Главная секция 2"
+
+#: funcs.php:113
+msgid "Main Section 2 description..."
+msgstr "Описание главной секции 2"
+
+#: funcs.php:119
+msgid "Subpage Section 1"
+msgstr "Дополнительная секция 1"
+
+#: funcs.php:121
+msgid "Subpage Section 1 description..."
+msgstr "Описание дополнительной секции 1"
+
+#: funcs.php:129
+msgid "E-mail"
+msgstr "Email"
+
+#: funcs.php:137
+msgid "Name"
+msgstr "Имя"
+
+#: funcs.php:145
+msgid "Phone"
+msgstr "Телефон"
+
+#: funcs.php:174
+msgid "Genres"
+msgstr "Жанры"
+
+#: funcs.php:175 funcs.php:181
+msgid "Genre"
+msgstr "Жанр"
+
+#: funcs.php:176
+msgid "All Genres"
+msgstr "Все жанры"
+
+#: funcs.php:177
+msgid "Edit Genre"
+msgstr "Редактировать жанр"
+
+#: funcs.php:178
+msgid "Update Genre"
+msgstr "Обновить жанр"
+
+#: funcs.php:179
+msgid "Add New Genre"
+msgstr "Добавить новый жанр"
+
+#: funcs.php:180
+msgid "New Genre Name"
+msgstr "Название нового жанра"
+
+#: funcs.php:186
+msgid "Books"
+msgstr "Книги"
 
 #: templates/admin-subpage1.php:2
 msgid "Subpage 1"
 msgstr "Дополнительная страница 1"
 
+#: templates/front/single-book.php:19
+msgid "Page"
+msgstr "Страница"
+
+#: templates/front/single-book.php:22
+msgid "Page %"
+msgstr "Страница %"
+
 #: templates/main-admin-page.php:2
 msgid "General settings"
 msgstr "Основные настройки"
 
-#: templates/main-admin-page.php:3
-msgid "Page content"
-msgstr "Контент страницы"
+#~ msgctxt "taxonomy singular name"
+#~ msgid "Genre"
+#~ msgstr "Жанр"
+
+#~ msgid "Page content"
+#~ msgstr "Контент страницы"
