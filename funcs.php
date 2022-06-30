@@ -216,6 +216,29 @@ function wfm_get_theme_template( $template ) {
 
 function wfm_add_plugin_links( $links ) {
 	$new_links = array( '<a href="' . admin_url( 'admin.php?page=wfm-main-settings' ) . '">' . __( 'WFM Settings', 'wfmfirst' ) . '</a>' );
-	$links = array_merge( $links, $new_links );
+	$links     = array_merge( $links, $new_links );
+
 	return $links;
+}
+
+function wfmtest_shortcode( $atts ) {
+	$atts = shortcode_atts( array (
+		'tag' => 'h3',
+		'class' => 'wfm-test',
+	), $atts );
+	$tag = esc_html( $atts['tag'] );
+	$class = esc_html( $atts['class'] );
+
+	return "<{$tag} class='{$class}'>Привет! Я - shortcode.</{$tag}>";
+}
+
+function wfmtest_content_shortcode( $atts, $content ) {
+	$atts = shortcode_atts( array (
+		'tag' => 'h5',
+		'class' => 'wfm-test2',
+	), $atts );
+	$tag = esc_html( $atts['tag'] );
+	$class = esc_html( $atts['class'] );
+
+	return "<{$tag} class='{$class}'>{$content}</{$tag}>";
 }
