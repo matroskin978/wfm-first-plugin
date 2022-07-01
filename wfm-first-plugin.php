@@ -37,9 +37,31 @@ add_shortcode( 'wfmtest_content', 'wfmtest_content_shortcode' );
 function gutenberg_examples_01_register_block() {
 	register_block_type( __DIR__ . '/blocks/block1' );
 }
+
 //add_action( 'init', 'gutenberg_examples_01_register_block' );
 
 //add_action( 'init', 'wfm_block_block2' );
 function wfm_block_block2() {
 	register_block_type( __DIR__ . '/blocks/block2' );
+}
+
+add_action( 'init', 'wfm_block_block3' );
+function wfm_block_block3() {
+	if ( ! function_exists( 'register_block_type' ) ) {
+		return;
+	}
+
+	wp_register_script( 'wfm-block3', plugins_url( 'blocks/block3/block.js', __FILE__ ), array(
+		'wp-blocks',
+		'wp-element',
+		'wp-editor'
+	) );
+	wp_register_style( 'wfm-block3-editor', plugins_url( 'blocks/block3/editor.css', __FILE__ ) );
+	wp_register_style( 'wfm-block3-style', plugins_url( 'blocks/block3/style.css', __FILE__ ) );
+
+	register_block_type( 'wfm-block/block3', array(
+		'editor_script' => 'wfm-block3',
+		'editor_style'  => 'wfm-block3-editor',
+		'style'         => 'wfm-block3-style',
+	) );
 }
