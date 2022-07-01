@@ -33,3 +33,8 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'wfm_add_plugi
 
 add_shortcode( 'wfmtest', 'wfmtest_shortcode' );
 add_shortcode( 'wfmtest_content', 'wfmtest_content_shortcode' );
+
+function gutenberg_examples_01_register_block() {
+	register_block_type( __DIR__ . '/blocks/block1' );
+}
+add_action( 'init', 'gutenberg_examples_01_register_block' );
