@@ -37,4 +37,9 @@ add_shortcode( 'wfmtest_content', 'wfmtest_content_shortcode' );
 function gutenberg_examples_01_register_block() {
 	register_block_type( __DIR__ . '/blocks/block1' );
 }
-add_action( 'init', 'gutenberg_examples_01_register_block' );
+//add_action( 'init', 'gutenberg_examples_01_register_block' );
+
+//add_action( 'init', 'wfm_block_block2' );
+function wfm_block_block2() {
+	register_block_type( __DIR__ . '/blocks/block2' );
+}

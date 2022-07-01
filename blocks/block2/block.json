@@ -1,0 +1,10 @@
+{
+  "apiVersion": 2,
+  "title": "WFM Block",
+  "name": "wfm-block/block2",
+  "category": "text",
+  "icon": "welcome-learn-more",
+  "editorScript": "file:./block.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style.css"
+}
