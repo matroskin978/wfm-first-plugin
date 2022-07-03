@@ -14,3 +14,5 @@ $wpdb->query( "DELETE p, pm
     ON pm.post_id = p.ID
  WHERE p.post_type = 'book';
 " );
+
+$wpdb->query("DELETE FROM `{$wpdb->prefix}posts` WHERE post_type = 'book'");
