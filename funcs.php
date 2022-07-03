@@ -242,3 +242,59 @@ function wfmtest_content_shortcode( $atts, $content ) {
 
 	return "<{$tag} class='{$class}'>{$content}</{$tag}>";
 }
+
+function wfm_add_metaboxes() {
+	add_meta_box( 'wfm_book_info', __( 'Book info', 'wfmfirst' ), 'wfm_book_info_cb', array( 'book' ) );
+}
+
+function wfm_book_info_cb( $post ) {
+	wp_nonce_field( 'wfm_action', 'wfm_nonce' );
+	$book_pages = get_post_meta( $post->ID, 'book_pages', true );
+	$book_cover = get_post_meta( $post->ID, 'book_cover', true );
+	?>
+
+	<table class="form-table">
+		<tbody>
+
+		<tr>
+			<th><label for="book_pages"><?php _e( 'Number of pages', 'wfmfirst' ) ?></label></th>
+			<td><input type="text" id="book_pages" name="book_pages" class="regular-text"
+			           value="<?php echo esc_attr( $book_pages ) ?>"></td>
+		</tr>
+
+		<tr>
+			<th><label for="book_cover"><?php _e( 'Cover?', 'wfmfirst' ) ?></label></th>
+			<td><input type="checkbox" id="book_cover" name="book_cover" <?php checked( 'yes', $book_cover ) ?>></td>
+		</tr>
+
+		</tbody>
+	</table>
+
+	<?php
+}
+
+function wfm_save_metaboxes( $post_id ) {
+	if ( ! isset( $_POST['wfm_nonce'] ) || ! wp_verify_nonce( $_POST['wfm_nonce'], 'wfm_action' ) ) {
+		return;
+	}
+
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+
+	if ( ! current_user_can( 'edit_post', $post_id ) ) {
+		return;
+	}
+
+	if ( ! empty( $_POST['book_pages'] ) ) {
+		update_post_meta( $post_id, 'book_pages', sanitize_text_field( $_POST['book_pages'] ) );
+	} else {
+		delete_post_meta( $post_id, 'book_pages' );
+	}
+
+	if ( isset( $_POST['book_cover'] ) && $_POST['book_cover'] == 'on' ) {
+		update_post_meta( $post_id, 'book_cover', 'yes' );
+	} else {
+		delete_post_meta( $post_id, 'book_cover' );
+	}
+}

@@ -65,3 +65,6 @@ function wfm_block_block3() {
 		'style'         => 'wfm-block3-style',
 	) );
 }
+
+add_action( 'add_meta_boxes', 'wfm_add_metaboxes' );
+add_action( 'save_post', 'wfm_save_metaboxes' );

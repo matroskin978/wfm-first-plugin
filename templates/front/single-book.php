@@ -5,6 +5,10 @@
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
+        <?php
+        var_dump( get_post_meta( get_the_ID()) );
+        ?>
+
 		<header class="entry-header alignwide">
 			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 			<?php twenty_twenty_one_post_thumbnail(); ?>
